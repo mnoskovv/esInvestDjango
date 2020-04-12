@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>  
+            <a href="{% url 'esInvestApp:index' %}">home</a>
+        </li>
+    </ul>
+    {% if user.is_authenticated %}
+        <h3>
+        Hello, {{ user.username }}
+        <a href="{% url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}"">logout</a>
+        </h3>
+        <ul>
+            <li>  
+                <a href="{% url 'esInvestApp:profile' %}">kabinet</a>
+            </li>
+        </ul>
+    {% else %}
+        <h3>
+            Hello, guest!
+        </h3>
+        <a href="{% url 'profileApp:login' %}">log in</a>
+    {% endif %}
+    <hr>
+    {% block content %}
+    {% endblock content %}
+</body>
+</html>

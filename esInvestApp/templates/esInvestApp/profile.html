@@ -1,0 +1,66 @@
+{% extends "esInvestApp/base.html" %}
+
+{% block content %}
+<a href="{% url 'esInvestApp:start' %}">Начать инвестировать</a>
+<a href="#">Депозит</a>
+<a href="#">Вывод средств</a>
+<a href="#">Настройки</a>
+<hr>
+<h1>Активные инвестиции</h1>
+<table style="border: 1px solid black;">
+    <tr>
+        <th>id</th>
+        <th>название</th>
+        <th>срок</th>
+        <th>сумма инвестиций</th>
+        <th>%</th>
+        <th>прибыль</th>
+        <th>дата</th>
+    </tr>
+    {% for deal in open_deals %}
+    <tr>
+        <td>{{ deal.id }}</td>
+        <td>{{deal.name}}</td>
+        <td>{{deal.term}}</td>
+        <td>{{deal.summary}}</td>
+        <td>{{deal.percent}}</td>
+        <td>{{deal.profit}}</td>
+        <td>{{deal.create_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+<h1>Закрытые инвестиции</h1>
+<table  style="border: 1px solid black;">
+    <tr>
+        <th>id</th>
+        <th>название</th>
+        <th>срок</th>
+        <th>сумма инвестиций</th>
+        <th>%</th>
+        <th>прибыль</th>
+        <th>дата</th>
+    </tr>
+    {% for deal in closed_deals %}
+    <tr>
+        <td>{{ deal.id }}</td>
+        <td>{{deal.name}}</td>
+        <td>{{deal.term}}</td>
+        <td>{{deal.summary}}</td>
+        <td>{{deal.percent}}</td>
+        <td>{{deal.profit}}</td>
+        <td>{{deal.create_date}}</td>
+    </tr>
+    {% empty %}
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    <td>-</td>
+    {% endfor %}
+</table>
+
+
+{% endblock content %}

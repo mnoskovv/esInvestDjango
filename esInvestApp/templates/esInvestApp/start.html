@@ -1,0 +1,9 @@
+{% extends 'esInvestApp/base.html' %}
+
+{% block content %}
+<form action="{% url 'esInvestApp:open_deal' %}" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button name="submit">submit</button>
+</form>
+{% endblock content %}

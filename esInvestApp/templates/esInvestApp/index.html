@@ -1,0 +1,22 @@
+{% extends "esInvestApp/base.html" %}
+
+{% block content %}
+    <ul>
+    {% for deal in deals %}
+            <li>
+                <h4>
+                   Инвест проект:{{deal.id}}
+                </h4>
+                <p>
+                    {{deal.name}}
+                </p>
+            </li>
+    {% empty %}
+            <h4>
+                No deals yet
+            </h4>
+    {% endfor %}
+    </ul>
+    
+
+{% endblock content %}
