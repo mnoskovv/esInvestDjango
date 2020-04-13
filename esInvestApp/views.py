@@ -5,6 +5,7 @@ from .models import Deal
 from .forms import DealForm
 import requests
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class privatBankCurrencyCourse:
@@ -27,6 +28,7 @@ def index(request):
     return render(request, 'esInvestApp/index.html', context)
 
 
+@login_required
 def profile(request):
     currency_course = privatBankCurrencyCourse.get()
     deals = Deal.objects.filter(owner = request.user)
@@ -43,6 +45,7 @@ def profile(request):
 
     return render(request, 'esInvestApp/profile.html', context)
 
+@login_required
 def open_deal(request):
     owner = request.user
     if request.method == 'POST':
@@ -62,6 +65,7 @@ def open_deal(request):
 
     return HttpResponseRedirect(reverse('esInvestApp:profile'))
 
+@login_required
 def start(request):
     form = DealForm()
 
