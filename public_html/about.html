@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style.css" type="text/css"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+
+    </head>
+    <body>
+        <div class="mobile_menu">
+            <ul class="nav  flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="/about.html">О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#calc">Калькулятор</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                </li>
+            </ul> 
+            <button type="button" class="btn orange_btn">Заказать звонок</button>
+        </div>
+        <header id="header" class="header_basic">
+            <div class="header_nav">
+                <div class="container full_container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-5 not_on_mobile">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about.html">О нас</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#calc">Калькулятор</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Контакты</a>
+                                </li>
+                            </ul> 
+                        </div>
+                        <div class="col-lg-1 col-md-2 col-3">
+                            <img src="img/logo_base.png" alt="" class="d-block mx-auto">
+                        </div>
+                        <div class="col-lg-6 col-md-5 col-6">
+                            <div class="right_content">
+                                <div class="right_item">
+                                    <a href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-alt"></i></a>
+                                </div>
+                                <div class="right_item">
+                                    <a href="#" data-toggle="modal" data-target="#online"><i class="fas fa-question-circle"></i></a>
+                                </div>
+                                <div class="right_item not_on_mobile">
+                                    <a href="#" class="lang active">РУС </a><a href="#" class="lang"> ENG</a>
+                                </div>
+                                <button type="button" class="btn orange_btn not_on_mobile" data-toggle="modal" data-target="#callback">Заказать звонок</button>
+                            </div>
+                        </div>
+                        <div class="col-3 on_mobile">
+                            <div class="ham_btn">
+                                <div class="ham_line1 ham_line"></div>
+                                <div class="ham_line2 ham_line"></div>
+                                <div class="ham_line3 ham_line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-1 col-2">
+                        <div class="orange_line"></div>
+                    </div>
+                    <div class="col-10">
+                        <h2>
+                            О нас
+                        </h2>
+                    </div>
+                </div>
+                <div class="row align-items-end">
+                    <div class="col-lg-7">
+                        <h4>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                        </h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+                        </p>
+                        <p>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        </p>
+                    </div>
+                    <div class="col-lg-4 col-md-10">
+                        <img src="img/license.png" alt="" class="img-fluid mx-auto d-block">
+                    </div>
+                    <div class="col-lg-1 col-md-2">
+                        <div class="center_on_mob">
+                            <a href="">
+                                <img src="img/pdf.png" alt=""><br>
+                                <span class="download">скачать</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </section>
+        <section id="team" class="team">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-1 col-2">
+                        <div class="orange_line"></div>
+                    </div>
+                    <div class="col-10">
+                        <h2>
+                            Наша команда
+                        </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="team_member shadow_block mt20 mb20">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="img/photo.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="name">
+                                        Андрей Алексеев
+                                    </div>
+                                    <div class="post">
+                                        Менеджер
+                                    </div>
+                                    <div class="member_desc">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="team_member shadow_block mt20 mb20">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="img/photo.png" alt="" class="img-fluid mx-auto d-block">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="name">
+                                        Андрей Алексеев
+                                    </div>
+                                    <div class="post">
+                                        Менеджер
+                                    </div>
+                                    <div class="member_desc">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer" class="footer">
+            <div class="container full_container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer_partners">
+                            Наши партнеры
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="img/NRW.INVEST_Logo.png" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-6">
+                                <img src="img/lider_invest.png" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="footer_logo not_on_mobile">
+                            <img src="img/footer_logo.png" alt="">
+                            <span class="copy"> © ES invest group. Все права защищены.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 centered_text">
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about.html">О нас</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#calc">Калькулятор</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Контакты</a>
+                            </li>
+                        </ul> 
+                        <a href="#" class="btn standart_btn switch_mob_btn not_on_mobile" role="button">
+                            Открыть мобильную<br>
+                            версию
+                        </a>
+                    </div>
+                    <div class="col-lg-3 offset-lg-1 col-md-4">
+                        <div class="tel_desc">
+                            Проконсультируйтесь с наши
+                            менеджером по телефону:
+                        </div>
+                        <div class="footer_tel">
+                            <a href="tel:04444444444" class="footer_tel">(044) 444 44 444</a> 
+                            <button type="button" class="btn orange_btn mt20" data-toggle="modal" data-target="#callback">Заказать звонок</button>
+                        </div> 
+                        <div class="footer_logo_mob">
+                            <img src="img/footer_logo.png" alt="">
+                            <span class="copy"> © ES invest group.<br>Все права защищены.</span>
+                        </div>
+                        <div class="centered_text on_mobile">
+                            <a href="#" class="btn standart_btn switch_mob_btn" role="button">
+                                Открыть мобильную<br>
+                                версию
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="login">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Вход в личный кабинет
+                        </h2>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+                                    <form>
+                                        <input type="email" name="mail" class="bottom_input" placeholder="Введите ваш Email">
+                                        <input type="password" name="pass" class="bottom_input" placeholder="Введите ваш пароль">
+                                        <button type="submit" class="btn standart_btn mb20">Войти</button>
+                                    </form>
+                                    <a href="#" data-toggle="modal" data-target="#lospass" class="zabili">Забыли пароль?</a>
+                                </div>
+                                <div class="col-12">
+                                    <div class="orange_line mt20 mb20"></div>
+                                    <h2>
+                                        Вы здесь впервые?
+                                    </h2>
+                                    <a href="#" data-toggle="modal" data-target="#reg" class="btn standart_btn mt20" role="button">Регистрация</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="lospass">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_lospass">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Забыли пароль?
+                        </h2>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3">
+                                    <form>
+                                        <input type="email" name="mail" class="bottom_input" placeholder="Введите ваш Email">
+                                        <button type="submit" class="btn standart_btn mb20">Новый пароль по email</button>
+                                    </form>
+                                    <a href="" class="zabili" data-toggle="modal" data-target="#login">Войти в систему</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="reg">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_reg">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Регистрация
+                        </h2>
+                        <p>Введите реальные данные, они должны подтверждаться копиями документов</p>
+                        <div class="container">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-5 offset-lg-1">
+                                        <input type="text" name="fam" class="bottom_input" placeholder="Введите вашу Фамилию">
+                                        <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
+                                        <input type="text" name="date" class="bottom_input" placeholder="Введите вашу дату рождения">
+                                        <input type="tel" name="tel" class="bottom_input" placeholder="Введите номер мобильного телефона">
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input type="email" name="mail" class="bottom_input" placeholder="Введите ваш Email">
+                                        <input type="password" name="pass" class="bottom_input" placeholder="Введите Ваш пароль">
+                                        <input type="password" name="pass1" class="bottom_input" placeholder="Повторите Ваш пароль">
+                                    </div>
+                                </div>
+                                <div class="row mt20">
+                                    <div class="col-lg-4 offset-lg-4">
+                                        <button type="submit" class="btn standart_btn mb20">Регистрация</button>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="right_links">
+                                            <a href="" class="zabili" data-toggle="modal" data-target="#lospass">Забыли пароль?</a><br>
+                                            <a href="" class="zabili" data-toggle="modal" data-target="#login">Войти</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="orange_line mt20 mb20"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <p class="subscibe">
+                                            Хочу получать новости от компании
+                                        </p>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="conteiner">
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="callback">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_callback">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Заказать обратный звонок
+                        </h2>
+                        <p>Укажите ваши контактные данные и мы с вами свяжемся в течении рабочего дня</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <form>
+                                        <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
+                                        <input type="tel" name="tel" class="bottom_input" placeholder="Введите Ваш телефон">
+                                        <button type="submit" class="btn standart_btn mb20">Заказать</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="depoz">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_callback">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Депозит
+                        </h2>
+                        <div class="container">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-6 offset-lg-3">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-6">
+                                                <p>
+                                                    Планируемая сумма инвестиций
+                                                </p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="mail" class="invest_input" placeholder="100">
+                                                <span>USD</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-2 offset-lg-2">
+                                        Способ оплаты
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label class="r_container"><img src="img/visa_color.png" alt="">
+                                            <input type="radio" name="pay" value="visa">
+                                            <span class="r_checkmark"></span>
+                                        </label>
+                                        <div class="left_text">
+                                            <b>Visa</b>
+                                        </div> 
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label class="r_container"><img src="img/Mastercard_color.png" alt="">
+                                            <input type="radio" name="pay" value="mastercard">
+                                            <span class="r_checkmark"></span>
+                                        </label>
+                                        <div class="left_text">
+                                            <b>Mastercard</b>
+                                        </div> 
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label class="r_container"><img src="img/BC_Logotype.png" alt="">
+                                            <input type="radio" name="pay" value="bitcoin">
+                                            <span class="r_checkmark"></span>
+                                        </label>
+                                        <div class="left_text">
+                                            <b>BTC</b>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button type="submit" class="btn standart_btn mb20 mt20">Ok</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="vivod">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_callback">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Вывод средств
+                        </h2>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <form>
+                                        <input type="text" name="card" class="bottom_input" placeholder="Введите номер карты">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-7 left_text">
+                                                Доступно к выводу
+                                            </div>
+                                            <div class="col-sm-6 col-5 right_text">
+                                                <span class="vivod_sum">1000</span> USD
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn standart_btn mb20 mt20">Вывести</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="quest">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_quest">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Задайте нам вопрос
+                        </h2>
+
+                        <div class="container">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-5 offset-lg-1">
+                                        <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
+                                        <input type="email" name="mail" class="bottom_input" placeholder="Введите ваш Email">
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <select class="bottom_input select_input" name="type">
+                                            <option>Тема вопроса</option>
+                                            <option value="1 смена">1 смена</option>
+                                            <option value="2 смена">2 смена</option>
+                                            <option value="3 смена">3 смена</option>
+                                            <option value="4 смена">4 смена</option>
+                                        </select>
+                                        <input type="text" name="quest" class="bottom_input" placeholder="Введите Ваш пароль">
+                                    </div>
+                                </div>
+                                <div class="row mt20">
+                                    <div class="col-lg-4 offset-lg-4">
+                                        <button type="submit" class="btn standart_btn mb20">Задать вопрос</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <p class="subscibe">
+                                            Хочу получать новости от компании
+                                        </p>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="conteiner">
+                                            <input type="checkbox" checked="checked" name="news">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="invest">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content modal_login modal_invest">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Инвест проект первый
+                        </h2>
+
+                        <div class="container">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-5 offset-lg-1">
+                                        <input type="text" name="srok" class="bottom_input" placeholder="Выберите срок">
+                                        <input type="text" name="sum" class="bottom_input" placeholder="Выберите сумму инвестиций">
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="pribil">
+                                            <span>Ожидаемая прибыль: </span>
+                                            <span>200$</span>
+                                        </div>
+                                        <div class="right_links">
+                                            <button type="submit" class="btn standart_btn mb20">Инвестировать</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="calc">
+            <div class="modal-dialog modal-dialog-centered  modal-xl">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close orange_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h3>
+                            Введите исходные данные и узнайте размер ожидаемой прибыли
+                        </h3>
+                        <div class="container">
+                            <form>
+                                <div class="row align-items-center mt40">
+                                    <div class="col-lg-4">
+                                        <div class="row align-items-center mb20">
+                                            <div class="col-4 right_text">
+                                                Cумма
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control calc_input" placeholder="0">
+                                                    <select class="form-control calc_input calc_select" name="type">
+                                                        <option value="USD">USD</option>
+                                                        <option value="EUR">EUR</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb20">
+                                            <div class="col-4 right_text">
+                                                Cрок
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="input-group">
+                                                    <select class="form-control calc_input calc_select" name="type">
+                                                        <option value="1 месяц">1 месяц</option>
+                                                        <option value="2 месяца">2 месяца</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="range">
+                                            <input type="range" min="1" max="100" id="sum" value="75">
+                                        </div>
+                                        <div class="range">
+                                            <input type="range" min="1" max="12" id="srok" value="1">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="balans profit">
+                                            <div class="balans_title">
+                                                Прибыль
+                                            </div>
+                                            <div class="balans_sum">
+                                                <sup>$</sup><span class="orange_teext">2500</span>
+                                            </div>
+                                            <div class="progres"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="online">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close orange_close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <h2>
+                            Онлайн поддержка
+                        </h2>
+                        <p>
+                            Задайте свой вопрос или опишите свою проблему
+                            и в ближайшее время с вами свяжется наш менеджер
+                        </p>
+                        <div class="container">
+                            <form>
+                                <div class="row align-items-center mt40">
+                                    <div class="col-12">
+                                        <input type="text" name="name" class="bottom_input setting_input" placeholder="Введите ваше Имя">
+                                        <input type="text" name="msg" class="bottom_input setting_input" placeholder="Введите ваше сообщение">
+                                        <button type="submit" class="btn standart_btn mb20">Задать вопрос</button> 
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="js/circle-progress.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
