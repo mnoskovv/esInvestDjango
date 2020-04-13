@@ -5,7 +5,7 @@
         <form method="post" action="{% url 'profileApp:login' %}" class="form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button name="submit" class="btn btn-primary">log in</button>
+            <button name="submit">log in</button>
             <input type="hidden" name="next" value="{% url 'esInvestApp:index' %}" />
         </form>
     <!-- end login form -->

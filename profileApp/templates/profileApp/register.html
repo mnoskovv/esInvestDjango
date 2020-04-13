@@ -1,0 +1,13 @@
+{% extends "esInvestApp/base.html" %}
+
+{% block content %}
+
+<form action="{% url 'profileApp:register' %}" method="POST">
+    {% csrf_token %}
+    {{ register_form.as_p }}
+    {{ profile_form.as_p }}
+    <button name="submit">register</button>
+    <input type="hidden" name="next" value="{% url 'esInvestApp:profile' %}" />
+</form>
+
+{% endblock content %}

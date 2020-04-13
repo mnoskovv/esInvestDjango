@@ -25,7 +25,8 @@ class Deal(models.Model):
            return False
         else:
             return True
-    open_state = property(_open_state)        
+
+    open_state = property(_open_state)
 
     def __str__(self):
         return self.name

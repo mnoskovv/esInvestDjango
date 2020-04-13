@@ -12,10 +12,7 @@
         </li>
     </ul>
     {% if user.is_authenticated %}
-        <h3>
-        Hello, {{ user.username }}
-        <a href="{% url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}"">logout</a>
-        </h3>
+        <a href="{% url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}">logout</a>
         <ul>
             <li>  
                 <a href="{% url 'esInvestApp:profile' %}">kabinet</a>
@@ -26,8 +23,18 @@
             Hello, guest!
         </h3>
         <a href="{% url 'profileApp:login' %}">log in</a>
+        <a href="{% url 'profileApp:register' %}">register</a>
     {% endif %}
     <hr>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                    {{ message }}
+                </li>
+            {% endfor %}
+            </ul>
+    {% endif %}
     {% block content %}
     {% endblock content %}
 </body>

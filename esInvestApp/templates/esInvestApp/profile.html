@@ -1,10 +1,19 @@
 {% extends "esInvestApp/base.html" %}
 
 {% block content %}
+<span>
+    <h3>Hello, {{ user.username }}</h3>
+    <small>id {{ user.id }}</small>
+</span>
+Hello, {{ user.username }}
 <a href="{% url 'esInvestApp:start' %}">Начать инвестировать</a>
 <a href="#">Депозит</a>
 <a href="#">Вывод средств</a>
 <a href="#">Настройки</a>
+<hr>
+<p><b>usd</b> {{usd}}</p>
+<p><b>eur</b> {{eur}}</p>
+<p>Баланс: {{balance}}</p>
 <hr>
 <h1>Активные инвестиции</h1>
 <table style="border: 1px solid black;">
