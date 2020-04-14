@@ -27,7 +27,7 @@ def register(request):
             profile_form = ProfileForm(request.POST, instance = authenticated_user.profile)
             if profile_form.is_valid():
                 profile_form.save()
-            return HttpResponseRedirect(reverse('esInvestApp:index'))
+            return HttpResponseRedirect(reverse('esInvestApp:profile'))
 
     context = {
         'register_form' : register_form,

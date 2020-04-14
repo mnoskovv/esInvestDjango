@@ -40,19 +40,19 @@
                                 <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Контакты</a>
+                                <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
                             </li>
                         </ul> 
                     </div>
                     <div class="col-lg-1 col-md-2 col-3">
-                        <img src="{% static 'img/logo_base.png' %}" alt="" class="d-block mx-auto">
+                        <a href="{% url 'esInvestApp:index' %}"><img src="{% static 'img/logo_base.png' %}" alt="" class="d-block mx-auto"></a>
                     </div>
                     <div class="col-lg-6 col-md-5 col-6">
                         <div class="right_content">
                             <div class="right_item">
                                 <!-- <a href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-alt"></i></a> -->
                                 {% if user.is_authenticated %}
-                                <a href="{% url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}">logout</a>
+                                <a href="{%  url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}"><i class="fas fa-sign-out-alt"></i></a>
                                 {% else %}
                                 <a href="{%  url 'profileApp:login' %}"><i class="fas fa-user-alt"></i></a>
                                 {% endif %}

@@ -22,7 +22,7 @@
             <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Контакты</a>
+            <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
         </li>
     </ul> 
     <button type="button" class="btn orange_btn">Заказать звонок</button>
@@ -38,9 +38,6 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Контакты</a>
                         </li>
                     </ul> 
                 </div>
@@ -286,7 +283,7 @@
                                     </div>
                                 </div>
                                 <div class="centered_text">
-                                    <button type="submit" class="btn standart_btn">Открыть депозит</button>
+                                    <a href="{% url 'esInvestApp:profile'%}" class="btn standart_btn">Открыть депозит</a>
                                 </div>
                             </form>
                         </div>
@@ -865,7 +862,9 @@
         </div>
         <div class="centered_text mt40">
             <!-- <button type="button" class="btn standart_btn" data-toggle="modal" data-target="#reg">Регистрация</button> -->
+            {% if not user.is_authenticated %}
             <a href="{% url 'profileApp:register' %}" class="btn standart_btn">Регистрация</a>
+            {% endif %}
         </div>
     </div>
 </section>
@@ -1097,7 +1096,7 @@
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#calc">Калькулятор</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Контакты</a>
+                        <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
                     </li>
                 </ul> 
             </div>
@@ -1294,221 +1293,6 @@
     </div>
 </div>
 
-<!-- The Modal -->
-<div class="modal fade" id="depoz">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content modal_login modal_callback">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <h2>
-                    Депозит
-                </h2>
-                <div class="container">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-6 offset-lg-3">
-                                <div class="row align-items-center">
-                                    <div class="col-md-6">
-                                        <p>
-                                            Планируемая сумма инвестиций
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" name="mail" class="invest_input" placeholder="100">
-                                        <span>USD</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-lg-2 offset-lg-2">
-                                Способ оплаты
-                            </div>
-                            <div class="col-lg-2">
-                                <label class="r_container"><img src="{% static 'img/visa_color.png' %}" alt="">
-                                    <input type="radio" name="pay" value="visa">
-                                    <span class="r_checkmark"></span>
-                                </label>
-                                <div class="left_text">
-                                    <b>Visa</b>
-                                </div> 
-                            </div>
-                            <div class="col-lg-2">
-                                <label class="r_container"><img src="{% static 'img/Mastercard_color.png' %}" alt="">
-                                    <input type="radio" name="pay" value="mastercard">
-                                    <span class="r_checkmark"></span>
-                                </label>
-                                <div class="left_text">
-                                    <b>Mastercard</b>
-                                </div> 
-                            </div>
-                            <div class="col-lg-2">
-                                <label class="r_container"><img src="{% static 'img/BC_Logotype.png' %}" alt="">
-                                    <input type="radio" name="pay" value="bitcoin">
-                                    <span class="r_checkmark"></span>
-                                </label>
-                                <div class="left_text">
-                                    <b>BTC</b>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <button type="submit" class="btn standart_btn mb20 mt20">Ok</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- The Modal -->
-<div class="modal fade" id="vivod">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content modal_login modal_callback">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <h2>
-                    Вывод средств
-                </h2>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 offset-lg-3">
-                            <form>
-                                <input type="text" name="card" class="bottom_input" placeholder="Введите номер карты">
-                                <div class="row">
-                                    <div class="col-sm-6 col-7 left_text">
-                                        Доступно к выводу
-                                    </div>
-                                    <div class="col-sm-6 col-5 right_text">
-                                        <span class="vivod_sum">1000</span> USD
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn standart_btn mb20 mt20">Вывести</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- The Modal -->
-<div class="modal fade" id="quest">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content modal_login modal_quest">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <h2>
-                    Задайте нам вопрос
-                </h2>
-
-                <div class="container">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-5 offset-lg-1">
-                                <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
-                                <input type="email" name="mail" class="bottom_input" placeholder="Введите ваш Email">
-                            </div>
-                            <div class="col-lg-5">
-                                <select class="bottom_input select_input" name="type">
-                                    <option>Тема вопроса</option>
-                                    <option value="1 смена">1 смена</option>
-                                    <option value="2 смена">2 смена</option>
-                                    <option value="3 смена">3 смена</option>
-                                    <option value="4 смена">4 смена</option>
-                                </select>
-                                <input type="text" name="quest" class="bottom_input" placeholder="Введите Ваш пароль">
-                            </div>
-                        </div>
-                        <div class="row mt20">
-                            <div class="col-lg-4 offset-lg-4">
-                                <button type="submit" class="btn standart_btn mb20">Задать вопрос</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-10">
-                                <p class="subscibe">
-                                    Хочу получать новости от компании
-                                </p>
-                            </div>
-                            <div class="col-2">
-                                <label class="conteiner">
-                                    <input type="checkbox" checked="checked" name="news">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- The Modal -->
-<div class="modal fade" id="invest">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content modal_login modal_invest">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <h2>
-                    Инвест проект первый
-                </h2>
-
-                <div class="container">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-5 offset-lg-1">
-                                <input type="text" name="srok" class="bottom_input" placeholder="Выберите срок">
-                                <input type="text" name="sum" class="bottom_input" placeholder="Выберите сумму инвестиций">
-                            </div>
-                            <div class="col-lg-5">
-                                <div class="pribil">
-                                    <span>Ожидаемая прибыль: </span>
-                                    <span>200$</span>
-                                </div>
-                                <div class="right_links">
-                                    <button type="submit" class="btn standart_btn mb20">Инвестировать</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
 
 <!-- The Modal -->
 <div class="modal fade" id="online">
@@ -1546,7 +1330,7 @@
     </div>
 </div>
 
-<script src="{% static 'js/circle-progress.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
+<!-- <script src="{% static 'js/circle-progress.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script> -->
 </body>
 </html>

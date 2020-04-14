@@ -57,7 +57,7 @@
                             <div>
                                 USD
                             </div>
-                            <div class="kurs_up">
+                            <div class='{{usd_state}}'>
                                 {{usd}}
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                             <div>
                                 EUR
                             </div>
-                            <div class="kurs_down">
+                            <div class='{{eur_state}}'>
                                 {{eur}}
                             </div>
                         </div>
@@ -104,22 +104,51 @@
                                 <td>{{deal.summary}} $</td>
                                 <td>{{deal.create_date}}</td>
                             </tr>
+                            {% empty %}
+                            <tr>
+                                <td class="not_on_mobile">-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
                             {% endfor %}
                     </table>
                 </div>
-            </div>      
+            </div>    
 
-            <!-- Nav pills -->
+            
             <ul class="nav nav-pills justify-content-center">
+                {% if open_deals.has_previous %}
+                    <li class="nav-item">
+                        <a href="?page={{ open_deals.previous_page_number }}" class="nav-link tab_arrow" aria-label="Previous" direction="prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                {% endif %}
+        
+                {% for num in open_deals.paginator.page_range %}
+                    {% if num == open_deals.number %}
+                    <li class="nav-item">
+                        <a class="nav-link active switcher1"  data-toggle="pill" href="#">{{ num }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link switcher1" data-toggle="pill" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                    {% endif %} 
+                {% endfor %}
+                
+        
+                {% if open_deals.has_next %}
                 <li class="nav-item">
-                    <a class="nav-link tab_arrow" href="" table-num="1"  direction="prev"><i class="fas fa-chevron-left"></i></a>
+                    <a class="nav-link tab_arrow" href="?page={{ open_deals.next_page_number }}" table-num="1" direction="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active switcher1" data-toggle="pill" href="#t1">1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link tab_arrow" href="" table-num="1" direction="next"><i class="fas fa-chevron-right"></i></a>
-                </li>
+                {% endif %}
             </ul>
         </div>
 
@@ -167,54 +196,40 @@
                         </tbody>
                     </table>
                 </div>
-            </div>      
+            </div>
+
             <!-- Nav pills -->
             <ul class="nav nav-pills justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link tab_arrow" href="" table-num="1"  direction="prev"><i class="fas fa-chevron-left"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active switcher1" data-toggle="pill" href="#t1">1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link tab_arrow" href="" table-num="1" direction="next"><i class="fas fa-chevron-right"></i></a>
-                </li>
+                {% if closed_deals.has_previous %}
+                    <li class="nav-item">
+                        <a href="?page2={{ closed_deals.previous_page_number }}" class="nav-link tab_arrow" aria-label="Previous" direction="prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>    
+                    </li>
+                {% endif %}
+                {% for num in closed_deals.paginator.page_range %}
+                    {% if num == closed_deals.number %}
+                        <li class="nav-item">
+                            <a class="nav-link active switcher1" data-toggle="pill" href="#">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link switcher1" data-toggle="pill" href="?page2={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if closed_deals.has_next %}
+                    <li class="nav-item">
+                        <a class="nav-link tab_arrow" href="?page2={{ closed_deals.next_page_number }}">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
+
+
+
+
         </div>
 </section>
-
-
-<!-- <hr>
-<h1>Закрытые инвестиции</h1>
-<table  style="border: 1px solid black;">
-    <tr>
-        <th>id</th>
-        <th>название</th>
-        <th>срок</th>
-        <th>сумма инвестиций</th>
-        <th>%</th>
-        <th>прибыль</th>
-        <th>дата</th>
-    </tr>
-    {% for deal in closed_deals %}
-    <tr>
-        <td>{{ deal.id }}</td>
-        <td>{{deal.name}}</td>
-        <td>{{deal.term}}</td>
-        <td>{{deal.summary}}</td>
-        <td>{{deal.percent}}</td>
-        <td>{{deal.profit}}</td>
-        <td>{{deal.create_date}}</td>
-    </tr>
-    {% empty %}
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    {% endfor %}
-</table> -->
-
 {% endblock content %}
