@@ -6,7 +6,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button name="submit">log in</button>
-            <input type="hidden" name="next" value="{% url 'esInvestApp:index' %}" />
+            <input type="hidden" name="next" value="{% url 'esInvestApp:profile' %}" />
         </form>
     <!-- end login form -->
 {% endblock %}

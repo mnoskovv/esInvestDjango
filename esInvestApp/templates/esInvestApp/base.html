@@ -34,7 +34,7 @@
                     <div class="col-lg-5 col-md-5 not_on_mobile">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/about.html">О нас</a>
+                                <a class="nav-link" href="#">О нас</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
@@ -90,5 +90,62 @@
 
     {% block content %}
     {% endblock content %}
+    <footer id="footer" class="footer">
+        <div class="container full_container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer_partners">
+                        Наши партнеры
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="{% static 'img/NRW.INVEST_Logo.png' %}" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="{% static 'img/lider_invest.png' %}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="footer_logo not_on_mobile">
+                        <img src="{% static 'img/footer_logo.png' %}" alt="">
+                        <span class="copy"> © ES invest group. Все права защищены.</span>
+                    </div>
+                </div>
+                <div class="col-md-4 centered_text">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">О нас</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#calc">Калькулятор</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Контакты</a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-4">
+                    <div class="tel_desc">
+                        Проконсультируйтесь с наши
+                        менеджером по телефону:
+                    </div>
+                    <div class="footer_tel">
+                        <a href="tel:04444444444" class="footer_tel">(044) 444 44 444</a> 
+                        <button type="button" class="btn orange_btn mt20" data-toggle="modal" data-target="#callback">Заказать звонок</button>
+                    </div> 
+                    <div class="footer_logo_mob">
+                        <img src="{% static 'img/footer_logo.png' %}" alt="">
+                        <span class="copy"> © ES invest group.<br>Все права защищены.</span>
+                    </div>
+                    <div class="centered_text on_mobile">
+                        <a href="#" class="btn standart_btn switch_mob_btn" role="button">
+                            Открыть мобильную<br>
+                            версию
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
 </body>
 </html>
