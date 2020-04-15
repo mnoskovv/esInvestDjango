@@ -21,9 +21,12 @@ class PrivatBankCurrencyCourse:
 
         if today in PrivatBankCurrencyCourse.currency_cache:
             return PrivatBankCurrencyCourse.currency_cache[today]
-        print("\t\tделаю хттп запрос")
+
         url = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
         data = requests.get(url).json()
+        rub = float(1 / float(data[2]['sale']))
+        usd = float(data[0]['sale']) * rub
+        eur = float(data[1]['sale']) * rub
         if yesterday in PrivatBankCurrencyCourse.currency_cache:
             if PrivatBankCurrencyCourse.currency_cache[yesterday]['usd'] < data[0]['sale']:
                 usd_state = "kurs_up"
@@ -33,9 +36,9 @@ class PrivatBankCurrencyCourse:
         eur_state = "kurs_down"
         currency_course = {
             'date': today,
-            'usd': data[0]['sale'],
+            'usd': round(usd, 2),
             'usd_state': usd_state,
-            'eur': data[1]['sale'],
+            'eur': round(eur, 2),
             'eur_state': eur_state,
         }
         PrivatBankCurrencyCourse.currency_cache[today] = currency_course
@@ -122,3 +125,6 @@ def start(request):
         'form':form,
     }
     return render(request, 'esInvestApp/start.html',context)
+
+def about(request):
+    return render(request, 'esInvestApp/about.html')

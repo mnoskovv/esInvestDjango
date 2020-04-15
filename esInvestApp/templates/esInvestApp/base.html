@@ -16,13 +16,13 @@
     <div class="mobile_menu">
         <ul class="nav  flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="#">О нас</a>
+                <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Контакты</a>
+                <a class="nav-link" href="{% url 'esInvestApp:about' %}">О нас</a>
             </li>
         </ul> 
         <button type="button" class="btn orange_btn">Заказать звонок</button>
@@ -34,13 +34,13 @@
                     <div class="col-lg-5 col-md-5 not_on_mobile">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">О нас</a>
+                                <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
+                                <a class="nav-link" href="{% url 'esInvestApp:about' %}">О нас</a>
                             </li>
                         </ul> 
                     </div>
@@ -113,13 +113,7 @@
                 <div class="col-md-4 centered_text">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">О нас</a>
-                        </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#calc">Калькулятор</a>
-                        </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Контакты</a>
+                            <a class="nav-link" href="{% url 'esInvestApp:about' %}">О нас</a>
                         </li>
                     </ul> 
                 </div>
@@ -136,17 +130,17 @@
                         <img src="{% static 'img/footer_logo.png' %}" alt="">
                         <span class="copy"> © ES invest group.<br>Все права защищены.</span>
                     </div>
-                    <div class="centered_text on_mobile">
-                        <a href="#" class="btn standart_btn switch_mob_btn" role="button">
-                            Открыть мобильную<br>
-                            версию
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </footer>
-    <script src="{% static 'js/circle-progress.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        $('.ham_btn').on('click', function () {
+            $('.ham_line1').toggleClass('active_hl1');
+            $('.ham_line2').toggleClass('active_hl2');
+            $('.ham_line3').toggleClass('active_hl3');
+            $('.mobile_menu').toggleClass('active');
+        });
+    </script>
 </body>
 </html>
