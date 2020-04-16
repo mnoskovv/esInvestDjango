@@ -1,6 +1,17 @@
 {% extends "esInvestApp/base.html" %}
 
 {% block content %}
+{% if messages %}
+
+    {% for message in messages  %}
+        <div class="alert {{ message.tags }}" role="alert" style="position: fixed; width:100%; z-index: 999;">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
 <section>
     <div class="container">
         <div class="row align-items-center">
@@ -45,11 +56,6 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <!-- <div class="massages mt20">
-                        <div class="msg_cat">Входящие сообщения</div>
-                        <div class="msg_ttl"><i class="far fa-envelope"></i> Начало работы</div>
-                        <div class="msg_ttl"><i class="far fa-envelope-open"></i> <span class="opened">Добро пожаловать</span></div>
-                    </div> -->
                     
                     <div class="kurs">
                         Курсы валют
@@ -99,9 +105,9 @@
                                 <td class="not_on_mobile">{{deal.id}}</td>
                                 <td>Инвест проект {{deal.name}}</td>
                                 <td>{{deal.term}} дн.</td>
-                                <td>{{deal.profit}} $</td>
-                                <td>{{deal.percent}}</td>
                                 <td>{{deal.summary}} $</td>
+                                <td>{{deal.percent}}</td>
+                                <td>{{deal.profit}} $</td>
                                 <td>{{deal.create_date}}</td>
                             </tr>
                             {% empty %}
@@ -177,9 +183,9 @@
                                 <td class="not_on_mobile">{{deal.id}}</td>
                                 <td>Инвест проект {{deal.name}}</td>
                                 <td>{{deal.term}} дн.</td>
-                                <td>{{deal.profit}} $</td>
-                                <td>{{deal.percent}}</td>
                                 <td>{{deal.summary}} $</td>
+                                <td>{{deal.percent}}</td>
+                                <td>{{deal.profit}} $</td>
                                 <td>{{deal.create_date}}</td>
                                 </tr>
                             {% empty %}

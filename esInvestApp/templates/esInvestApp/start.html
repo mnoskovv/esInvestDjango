@@ -1,9 +1,136 @@
 {% extends 'esInvestApp/base.html' %}
-
+{% load widget_tweaks %}
 {% block content %}
-<form action="{% url 'esInvestApp:open_deal' %}" method="POST">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button name="submit">submit</button>
-</form>
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-1 col-2">
+                <div class="orange_line"></div>
+            </div>
+            <div class="col-10">
+                <h2>
+                    Начать инвестировать
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 mt20">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+                </p>
+                <p>
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qu
+                </p>
+            </div>
+        </div>
+
+        <div class="table_container shadow_block">
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane tab-pane1 active" id="t1">
+                    <table class="table table-hover table-responsive-sm mb20">
+                        <thead>
+                            <tr>
+                                <th class="not_on_mobile">№</th>
+                                <th>Название</th>
+                                <th>Срок</th>
+                                <th>Диапазон инвестиций</th>
+                                <th>% Прибыли</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for deal in available_deals %}
+                            <tr href="#" data-toggle="modal" data-target="#invest" onclick="test_click('{{deal.name}}', '{{deal.term}}', '{{deal.percent}}');">
+                                <td class="not_on_mobile">1</td>
+                                <td>{{deal.name}}</td>
+                                <td>{{deal.term}} дней</td>
+                                <td>{{deal.invest_range}}</td>
+                                <td>{{deal.percent}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div> 
+     
+    <!-- The Modal -->
+    <div class="modal fade" id="invest">
+        <div class="modal-dialog modal-dialog-centered  modal-xl">
+            <div class="modal-content modal_login modal_invest">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h2 id="deal-name">
+                    </h2>
+                    <!-- ['name','term', 'percent', 'summary'] -->
+                    <div class="container">
+                        <form action="{% url 'esInvestApp:open_deal' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-5 offset-lg-1">
+                                    <span>Срок в днях: </span>
+                                    {{form.term|add_class:"bottom_input"|attr:"id:deal-srok"|attr:"placeholder:Cрок в днях"}}
+                                    <span>Сумма инвестиций: </span>
+                                    {{form.summary|add_class:"bottom_input"|attr:"id:invest_field"|attr:"placeholder:Выберите сумму инвестиций"}}
+                                    <input type="hidden" id="post_name" name="name"  value="">
+                                    <input type="hidden" id="post_percent"  name="percent" value="">
+                                </div>
+                                <div class="col-lg-5">
+                                    <div class="pribil">
+                                        <span>Ожидаемая прибыль: </span>
+                                        <span id="earnings">0$</span>
+                                    </div>
+                                    <div class="right_links">
+                                        <button type="submit" class="btn standart_btn mb20">Инвестировать</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+    <script type="text/javascript">
+        var _koefficient = 0;
+
+        $("#invest_field").on("input", function() 
+        {
+            sum = parseFloat(this.value);
+            var percent = parseFloat(_koefficient / 100) * sum;
+            var res = percent + sum;
+            if (this.value == "")
+            {
+                $('#earnings').text("0$");
+            }
+            else
+            {
+                $('#earnings').text(res);
+            }
+            console.log(res);
+        });
+
+        function test_click(name, srok, koefficient)
+        {
+            console.log(name, srok);
+            $('#deal-name').html(name);
+            $('#deal-srok').val(parseFloat(srok));
+            
+            $('#post_name').val(name);
+            $('#post_percent').val(koefficient);
+            
+            _koefficient = koefficient;
+            console.log(_koefficient);
+        }
+    </script>
+
 {% endblock content %}

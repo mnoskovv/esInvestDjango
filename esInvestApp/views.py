@@ -28,11 +28,17 @@ class PrivatBankCurrencyCourse:
         if today in PrivatBankCurrencyCourse.currency_cache:
             return PrivatBankCurrencyCourse.currency_cache[today]
 
-        url = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
-        data = requests.get(url).json()
-        rub = float(1 / float(data[2]['sale']))
-        usd = float(data[0]['sale']) * rub
-        eur = float(data[1]['sale']) * rub
+        
+        try:
+            url = 'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5'
+            data = requests.get(url).json()
+            rub = float(1 / float(data[2]['sale']))
+            usd = float(data[0]['sale']) * rub
+            eur = float(data[1]['sale']) * rub
+        except:
+            rub = float(0)
+            usd = float(0)
+            eur = float(0)
         if yesterday in PrivatBankCurrencyCourse.currency_cache:
             if PrivatBankCurrencyCourse.currency_cache[yesterday]['usd'] < data[0]['sale']:
                 usd_state = "kurs_up"
@@ -52,7 +58,7 @@ class PrivatBankCurrencyCourse:
 
 @transaction.atomic
 def index(request):
-    deals = Deal.objects.all().order_by('-create_date')[:5]
+    deals = Deal.objects.all().filter(special=False).order_by('-create_date')[:5]
 
 #   reg
     if request.method != 'POST':
@@ -82,7 +88,7 @@ def index(request):
 @login_required
 def profile(request):
     currency_course = PrivatBankCurrencyCourse.get()
-    deals = Deal.objects.filter(owner = request.user)
+    deals = Deal.objects.filter(owner = request.user).filter(special = False)
 
     open_deals = [d for d in deals if d.open_state == True]
     closed_deals = [d for d in deals if d.open_state == False]
@@ -128,10 +134,13 @@ def open_deal(request):
     owner = request.user
     if request.method == 'POST':
         form  = DealForm(data=request.POST)
-        
+
         if form.is_valid():
+            profit = float(float(form.cleaned_data['percent']) / 100) * float(form.cleaned_data['summary'])
+            res = float(form.cleaned_data['summary']) + profit
             deal = form.save(commit = False)
             deal.owner = owner
+            deal.profit = round(profit, 2)
             if request.user.profile.balance >= deal.summary:
                 request.user.profile.balance -= deal.summary
                 request.user.save()
@@ -146,9 +155,10 @@ def open_deal(request):
 @login_required
 def start(request):
     form = DealForm()
-
+    available_deals = Deal.objects.all().filter(special = True)
     context = {
         'form':form,
+        'available_deals': available_deals,
     }
     return render(request, 'esInvestApp/start.html',context)
 

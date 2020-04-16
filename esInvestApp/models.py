@@ -14,6 +14,8 @@ class Deal(models.Model):
     percent = models.PositiveIntegerField()
     profit = models.FloatField()
     create_date = models.DateTimeField(auto_now_add = True)
+    special = models.BooleanField(default = False)
+    invest_range = models.CharField(max_length = 20, blank=True, null=True)
 
     def _open_state(self):
         today = datetime.now().replace(tzinfo=utc)
@@ -29,4 +31,7 @@ class Deal(models.Model):
     open_state = property(_open_state)
 
     def __str__(self):
-        return self.name
+        if self.special == True:
+            return "Special " + self.name
+        else:
+             return self.name

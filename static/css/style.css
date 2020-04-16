@@ -173,6 +173,12 @@ section{
 .slider_item1{
     background: url(../img/slider.jpg) no-repeat center center / cover;
 }
+.slider_item2{
+    background: url(../img/slider1.jpg) no-repeat center center / cover;
+}
+.slider_item3{
+    background: url(../img/slider2.jpg) no-repeat center center / cover;
+}
 
 .slider_btn{
     padding: 10px 35px;
