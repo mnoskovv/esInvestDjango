@@ -123,6 +123,73 @@
             </div>
         </div>
     </footer>
+    <!-- The Modal -->
+    <div class="modal fade" id="online">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close orange_close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h2>
+                        Онлайн поддержка
+                    </h2>
+                    <p>
+                        Задайте свой вопрос или опишите свою проблему
+                        и в ближайшее время с вами свяжется наш менеджер
+                    </p>
+                    <div class="container">
+                        <form>
+                            <div class="row align-items-center mt40">
+                                <div class="col-12">
+                                    <input type="text" name="name" class="bottom_input setting_input" placeholder="Введите ваше Имя">
+                                    <input type="text" name="msg" class="bottom_input setting_input" placeholder="Введите ваше сообщение">
+                                    <button type="submit" class="btn standart_btn mb20">Задать вопрос</button> 
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="callback">
+        <div class="modal-dialog modal-dialog-centered  modal-xl">
+            <div class="modal-content modal_login modal_callback">
+    
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                </div>
+    
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h2>
+                        Заказать обратный звонок
+                    </h2>
+                    <p>Укажите ваши контактные данные и мы с вами свяжемся в течении рабочего дня</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 offset-lg-3">
+                                <form>
+                                    <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
+                                    <input type="tel" name="tel" class="bottom_input" placeholder="Введите Ваш телефон">
+                                    <button type="submit" class="btn standart_btn mb20">Заказать</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
     <script>
         $('.ham_btn').on('click', function () {
             $('.ham_line1').toggleClass('active_hl1');
