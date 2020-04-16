@@ -24,6 +24,20 @@
     </ul> 
     <button type="button" class="btn orange_btn">Заказать звонок</button>
 </div>
+{% if register_form.errors %}
+{% for field in register_form %}
+    {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endfor %}
+{% for error in register_form.non_field_errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+{% endfor %}
+{% endif %}
 <header class="header">
     <div class="header_nav">
         <div class="container full_container">
@@ -141,7 +155,9 @@
             </div>
         </div>
     </div>
-</header>  
+</header>
+
+
 
 <div class="video_block">
     <div class="container">
@@ -858,9 +874,8 @@
             </div>
         </div>
         <div class="centered_text mt40">
-            <!-- <button type="button" class="btn standart_btn" data-toggle="modal" data-target="#reg">Регистрация</button> -->
             {% if not user.is_authenticated %}
-            <a href="{% url 'profileApp:register' %}" class="btn standart_btn">Регистрация</a>
+                <button type="button" class="btn standart_btn" data-toggle="modal" data-target="#reg">Регистрация</button>
             {% endif %}
         </div>
     </div>
@@ -1190,42 +1205,44 @@
     <div class="modal-dialog modal-dialog-centered  modal-xl">
         <div class="modal-content modal_login modal_reg">
 
-            <!-- Modal Header -->
+              <!-- Modal header -->
             <div class="modal-header">
                 <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
+                {% load widget_tweaks %}
                 <h2>
                     Регистрация
                 </h2>
                 <p>Введите реальные данные, они должны подтверждаться копиями документов</p>
                 <div class="container">
-                    <form>
+                    <form action="{% url 'esInvestApp:index' %}" method="POST">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-5 offset-lg-1">
-                                <input type="text" name="fam" class="bottom_input" placeholder="Введите вашу Фамилию">
-                                <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
-                                <input type="text" name="date" class="bottom_input" placeholder="Введите вашу дату рождения">
-                                <input type="tel" name="tel" class="bottom_input" placeholder="Введите номер мобильного телефона">
+                                {{register_form.last_name|add_class:"bottom_input"|attr:"placeholder:Введите вашу Фамилию"}}
+                                {{register_form.first_name|add_class:"bottom_input"|attr:"placeholder:Введите ваше Имя"}}
+                                {{profile_form.phone_number|add_class:"bottom_input"|attr:"placeholder:Введите номер мобильного телефона"}}
                             </div>
                             <div class="col-lg-5">
-                                <input type="email" name="mail" class="bottom_input" placeholder="Введите ваш Email">
-                                <input type="password" name="pass" class="bottom_input" placeholder="Введите Ваш пароль">
-                                <input type="password" name="pass1" class="bottom_input" placeholder="Повторите Ваш пароль">
+                                {{register_form.email|add_class:"bottom_input"|attr:"placeholder:Введите ваш Email"}}
+                                {{register_form.password1|add_class:"bottom_input"|attr:"placeholder:Введите Ваш пароль"}}
+                                {{register_form.password2|add_class:"bottom_input"|attr:"placeholder:Повторите Ваш пароль"}}
                             </div>
                         </div>
                         <div class="row mt20">
                             <div class="col-lg-4 offset-lg-4">
                                 <button type="submit" class="btn standart_btn mb20">Регистрация</button>
                             </div>
-                            <div class="col-lg-4">
+                            <!-- <div class="col-lg-4">
                                 <div class="right_links">
-                                    <a href="" class="zabili" data-toggle="modal" data-target="#lospass">Забыли пароль?</a><br>
+                                    <a href="" class="zabili" data-toggle="modal" data-target="#lospass">Забыли пароль?</a>
+                                        <br>
                                     <a href="" class="zabili" data-toggle="modal" data-target="#login">Войти</a>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-12">
                                 <div class="orange_line mt20 mb20"></div>
                             </div>
@@ -1243,6 +1260,8 @@
                                 </label>
                             </div>
                         </div>
+                        <input type="hidden" name="username" value="{{register_form.email.value}}" />
+                        <input type="hidden" name="next" value="{% url 'esInvestApp:profile' %}" />
                     </form>
                 </div>
             </div>

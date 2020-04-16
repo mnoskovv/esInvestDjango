@@ -9,6 +9,12 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
+from django.contrib.auth import login, authenticate
+from django.db import transaction
+from profileApp.forms import ProfileForm, SignUpForm
+from profileApp.models import Profile
+
 # Create your views here.
 class PrivatBankCurrencyCourse:
     
@@ -44,11 +50,31 @@ class PrivatBankCurrencyCourse:
         PrivatBankCurrencyCourse.currency_cache[today] = currency_course
         return currency_course
 
+@transaction.atomic
 def index(request):
     deals = Deal.objects.all().order_by('-create_date')[:5]
 
+#   reg
+    if request.method != 'POST':
+        register_form = SignUpForm()
+        profile_form = ProfileForm()
+    else:
+        register_form = SignUpForm(data = request.POST)
+        profile_form = ProfileForm()
+        if register_form.is_valid():
+            new_user = register_form.save()
+            authenticated_user = authenticate(username = new_user.username, password = request.POST['password1'])
+            login(request, authenticated_user)
+            profile_form = ProfileForm(request.POST, instance = authenticated_user.profile)
+            if profile_form.is_valid():
+                profile_form.save()
+            return HttpResponseRedirect(reverse('esInvestApp:profile'))
+# end reg
     context = {
         'deals' : deals,
+        # reg
+        'register_form' : register_form,
+        'profile_form': profile_form,
     }
     return render(request, 'esInvestApp/index.html', context)
 

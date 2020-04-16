@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # user apps
     'esInvestApp',
     'profileApp',
+    # third party apps
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
