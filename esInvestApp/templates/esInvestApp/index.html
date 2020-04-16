@@ -1227,9 +1227,18 @@
                                 {{profile_form.phone_number|add_class:"bottom_input"|attr:"placeholder:Введите номер мобильного телефона"}}
                             </div>
                             <div class="col-lg-5">
-                                {{register_form.email|add_class:"bottom_input"|attr:"placeholder:Введите ваш Email"}}
+                                {{register_form.email|add_class:"bottom_input"|attr:"placeholder:Введите ваш Email"|attr:"id:email"}}
                                 {{register_form.password1|add_class:"bottom_input"|attr:"placeholder:Введите Ваш пароль"}}
                                 {{register_form.password2|add_class:"bottom_input"|attr:"placeholder:Повторите Ваш пароль"}}
+                                <input type="hidden" id="id_username" name="username" value=""/>
+                                <script>
+                                    $(function() {
+                                        $('#email').on('keyup', function() {
+                                            var text = $(this).val();
+                                            $('#id_username').val(text);
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
                         <div class="row mt20">
@@ -1260,7 +1269,6 @@
                                 </label>
                             </div>
                         </div>
-                        <input type="hidden" name="username" value="{{register_form.email.value}}" />
                         <input type="hidden" name="next" value="{% url 'esInvestApp:profile' %}" />
                     </form>
                 </div>
