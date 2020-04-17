@@ -1,75 +1,237 @@
 {% extends "esInvestApp/base.html" %}
 
 {% block content %}
-<span>
-    <h3>Hello, {{ user.username }}</h3>
-    <small>id {{ user.id }}</small>
-</span>
-Hello, {{ user.username }}
-<a href="{% url 'esInvestApp:start' %}">Начать инвестировать</a>
-<a href="#">Депозит</a>
-<a href="#">Вывод средств</a>
-<a href="#">Настройки</a>
-<hr>
-<p><b>usd</b> {{usd}}</p>
-<p><b>eur</b> {{eur}}</p>
-<p>Баланс: {{balance}}</p>
-<hr>
-<h1>Активные инвестиции</h1>
-<table style="border: 1px solid black;">
-    <tr>
-        <th>id</th>
-        <th>название</th>
-        <th>срок</th>
-        <th>сумма инвестиций</th>
-        <th>%</th>
-        <th>прибыль</th>
-        <th>дата</th>
-    </tr>
-    {% for deal in open_deals %}
-    <tr>
-        <td>{{ deal.id }}</td>
-        <td>{{deal.name}}</td>
-        <td>{{deal.term}}</td>
-        <td>{{deal.summary}}</td>
-        <td>{{deal.percent}}</td>
-        <td>{{deal.profit}}</td>
-        <td>{{deal.create_date}}</td>
-    </tr>
-    {% endfor %}
-</table>
-<hr>
-<h1>Закрытые инвестиции</h1>
-<table  style="border: 1px solid black;">
-    <tr>
-        <th>id</th>
-        <th>название</th>
-        <th>срок</th>
-        <th>сумма инвестиций</th>
-        <th>%</th>
-        <th>прибыль</th>
-        <th>дата</th>
-    </tr>
-    {% for deal in closed_deals %}
-    <tr>
-        <td>{{ deal.id }}</td>
-        <td>{{deal.name}}</td>
-        <td>{{deal.term}}</td>
-        <td>{{deal.summary}}</td>
-        <td>{{deal.percent}}</td>
-        <td>{{deal.profit}}</td>
-        <td>{{deal.create_date}}</td>
-    </tr>
-    {% empty %}
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    {% endfor %}
-</table>
+{% if messages %}
 
+    {% for message in messages  %}
+        <div class="alert {{ message.tags }}" role="alert" style="position: fixed; width:100%; z-index: 999;">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-1 col-2">
+                <div class="orange_line"></div>
+            </div>
+            <div class="col-10">
+                <h2>
+                    Личный кабинет
+                </h2>
+            </div>
+        </div>
 
+        <div class="lich_info shadow_block">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <div class="hello">
+                        Здравствуйте, {{ user.first_name }}!
+                    </div>
+                    <div class="id">
+                        id {{ user.id }}
+                    </div>
+                    <div class="balans">
+                        <div class="balans_title">
+                            Баланс
+                        </div>
+                        <div class="balans_sum">
+                            <sup>$</sup><span class="orange_teext">{{balance}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="#" class="btn standart_btn kab_btn mt20" role="button" data-toggle="modal" data-target="#depoz">Депозит</a>
+                            <a href="#" class="btn standart_btn kab_btn mt20" role="button" data-toggle="modal" data-target="#vivod">Вывод</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="{% url 'esInvestApp:start' %}" class="btn standart_btn kab_btn mt20" role="button">Начать инвестировать</a>
+                            <a href="#" class="btn standart_btn kab_btn disabled_btn mt20" role="button">Настройки</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    
+                    <div class="kurs">
+                        Курсы валют
+                        <div class="kurs_info">
+                            <div>
+                                USD
+                            </div>
+                            <div class='{{usd_state}}'>
+                                {{usd}}
+                            </div>
+                        </div>
+                        <div class="kurs_info">
+                            <div>
+                                EUR
+                            </div>
+                            <div class='{{eur_state}}'>
+                                {{eur}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table_container shadow_block">
+            <div class="table_title">
+                Активные инвестиции
+            </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane tab-pane1 active" id="t1">
+                    <table class="table table-hover table-responsive-sm mb20">
+                        <thead>
+                            <tr>
+                                <th class="not_on_mobile">№</th>
+                                <th>Название</th>
+                                <th>Срок</th>
+                                <th>Сумма инвестиций</th>
+                                <th>%</th>
+                                <th>Прибыль</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for deal in open_deals %}
+                            <tr>
+                                <td class="not_on_mobile">{{deal.id}}</td>
+                                <td>Инвест проект {{deal.name}}</td>
+                                <td>{{deal.term}} дн.</td>
+                                <td>{{deal.summary}} $</td>
+                                <td>{{deal.percent}}</td>
+                                <td>{{deal.profit}} $</td>
+                                <td>{{deal.create_date}}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td class="not_on_mobile">-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            {% endfor %}
+                    </table>
+                </div>
+            </div>    
+
+            
+            <ul class="nav nav-pills justify-content-center">
+                {% if open_deals.has_previous %}
+                    <li class="nav-item">
+                        <a href="?page={{ open_deals.previous_page_number }}" class="nav-link tab_arrow" aria-label="Previous" direction="prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                {% endif %}
+        
+                {% for num in open_deals.paginator.page_range %}
+                    {% if num == open_deals.number %}
+                    <li class="nav-item">
+                        <a class="nav-link active switcher1"  data-toggle="pill" href="#">{{ num }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link switcher1" data-toggle="pill" href="?page={{ num }}">{{ num }}</a>
+                    </li>
+                    {% endif %} 
+                {% endfor %}
+                
+        
+                {% if open_deals.has_next %}
+                <li class="nav-item">
+                    <a class="nav-link tab_arrow" href="?page={{ open_deals.next_page_number }}" table-num="1" direction="next">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="table_container shadow_block">
+            <div class="table_title">
+                Закрытые инвестиции
+            </div>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane tab-pane2 active" id="t21">
+                    <table class="table table-hover table-responsive-sm mb20">
+                        <thead>
+                            <tr>
+                                <th class="not_on_mobile">№</th>
+                                <th>Название</th>
+                                <th>Срок</th>
+                                <th>Сумма инвестиций</th>
+                                <th>%</th>
+                                <th>Прибыль</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for deal in closed_deals %}
+                                <tr>
+                                <td class="not_on_mobile">{{deal.id}}</td>
+                                <td>Инвест проект {{deal.name}}</td>
+                                <td>{{deal.term}} дн.</td>
+                                <td>{{deal.summary}} $</td>
+                                <td>{{deal.percent}}</td>
+                                <td>{{deal.profit}} $</td>
+                                <td>{{deal.create_date}}</td>
+                                </tr>
+                            {% empty %}
+                                <tr></tr>
+                                <td class="not_on_mobile">-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Nav pills -->
+            <ul class="nav nav-pills justify-content-center">
+                {% if closed_deals.has_previous %}
+                    <li class="nav-item">
+                        <a href="?page2={{ closed_deals.previous_page_number }}" class="nav-link tab_arrow" aria-label="Previous" direction="prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>    
+                    </li>
+                {% endif %}
+                {% for num in closed_deals.paginator.page_range %}
+                    {% if num == closed_deals.number %}
+                        <li class="nav-item">
+                            <a class="nav-link active switcher1" data-toggle="pill" href="#">{{ num }}</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link switcher1" data-toggle="pill" href="?page2={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if closed_deals.has_next %}
+                    <li class="nav-item">
+                        <a class="nav-link tab_arrow" href="?page2={{ closed_deals.next_page_number }}">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+</section>
 {% endblock content %}

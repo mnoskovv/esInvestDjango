@@ -5,4 +5,4 @@ from .models import Deal
 class DealForm(forms.ModelForm):
     class Meta:
         model = Deal
-        fields = ['name','term', 'profit', 'percent', 'summary']
+        fields = ['name','term', 'percent', 'summary']

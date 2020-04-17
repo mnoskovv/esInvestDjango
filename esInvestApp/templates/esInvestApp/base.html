@@ -1,41 +1,202 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <title>EsInvest - Инвестиции в ваше будущее</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
 <body>
-    <ul>
-        <li>  
-            <a href="{% url 'esInvestApp:index' %}">home</a>
-        </li>
-    </ul>
-    {% if user.is_authenticated %}
-        <a href="{% url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}">logout</a>
-        <ul>
-            <li>  
-                <a href="{% url 'esInvestApp:profile' %}">kabinet</a>
+    <div class="mobile_menu">
+        <ul class="nav  flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
             </li>
-        </ul>
-    {% else %}
-        <h3>
-            Hello, guest!
-        </h3>
-        <a href="{% url 'profileApp:login' %}">log in</a>
-        <a href="{% url 'profileApp:register' %}">register</a>
-    {% endif %}
-    <hr>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-                    {{ message }}
-                </li>
-            {% endfor %}
-            </ul>
-    {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'esInvestApp:about' %}">О нас</a>
+            </li>
+        </ul> 
+        <button type="button" class="btn orange_btn">Заказать звонок</button>
+    </div>
+    <header class="header_basic">
+        <div class="header_nav">
+            <div class="container full_container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-5 not_on_mobile">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'esInvestApp:index' %}">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'esInvestApp:profile'%}">Кабинет</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'esInvestApp:about' %}">О нас</a>
+                            </li>
+                        </ul> 
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-3">
+                        <a href="{% url 'esInvestApp:index' %}"><img src="{% static 'img/logo_base.png' %}" alt="" class="d-block mx-auto"></a>
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-6">
+                        <div class="right_content">
+                            <div class="right_item">
+                                <!-- <a href="#" data-toggle="modal" data-target="#login"><i class="fas fa-user-alt"></i></a> -->
+                                {% if user.is_authenticated %}
+                                <a href="{%  url 'profileApp:logout' %}?next={% url 'esInvestApp:index'%}"><i class="fas fa-sign-out-alt"></i></a>
+                                {% else %}
+                                <a href="{%  url 'profileApp:login' %}"><i class="fas fa-user-alt"></i></a>
+                                {% endif %}
+                            </div>
+                            <div class="right_item">
+                                <a href="#" data-toggle="modal" data-target="#online"><i class="fas fa-question-circle"></i></a>
+                            </div>
+                            <!-- <div class="right_item not_on_mobile">
+                                <a href="#" class="lang active">РУС </a><a href="#" class="lang"> ENG</a>
+                            </div> -->
+                            <!-- <button type="button" class="btn orange_btn not_on_mobile" data-toggle="modal" data-target="#callback">Заказать звонок</button> -->
+                        </div>
+                    </div>
+                    <div class="col-3 on_mobile">
+                        <div class="ham_btn">
+                            <div class="ham_line1 ham_line"></div>
+                            <div class="ham_line2 ham_line"></div>
+                            <div class="ham_line3 ham_line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     {% block content %}
     {% endblock content %}
+    <footer id="footer" class="footer">
+        <div class="container full_container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer_partners">
+                        Наши партнеры
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="{% static 'img/NRW.INVEST_Logo.png' %}" alt="" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="{% static 'img/lider_invest.png' %}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="footer_logo not_on_mobile">
+                        <img src="{% static 'img/footer_logo.png' %}" alt="">
+                        <span class="copy"> © ES invest group. Все права защищены.</span>
+                    </div>
+                </div>
+                <div class="col-md-4 centered_text">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'esInvestApp:about' %}">О нас</a>
+                        </li>
+                    </ul> 
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-4">
+                    <div class="tel_desc">
+                        Проконсультируйтесь с наши
+                        менеджером по телефону:
+                    </div>
+                    <div class="footer_tel">
+                        <a href="tel:04444444444" class="footer_tel">(044) 444 44 444</a> 
+                        <button type="button" class="btn orange_btn mt20" data-toggle="modal" data-target="#callback">Заказать звонок</button>
+                    </div> 
+                    <div class="footer_logo_mob">
+                        <img src="{% static 'img/footer_logo.png' %}" alt="">
+                        <span class="copy"> © ES invest group.<br>Все права защищены.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- The Modal -->
+    <div class="modal fade" id="online">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close orange_close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h2>
+                        Онлайн поддержка
+                    </h2>
+                    <p>
+                        Задайте свой вопрос или опишите свою проблему
+                        и в ближайшее время с вами свяжется наш менеджер
+                    </p>
+                    <div class="container">
+                        <form>
+                            <div class="row align-items-center mt40">
+                                <div class="col-12">
+                                    <input type="text" name="name" class="bottom_input setting_input" placeholder="Введите ваше Имя">
+                                    <input type="text" name="msg" class="bottom_input setting_input" placeholder="Введите ваше сообщение">
+                                    <button type="submit" class="btn standart_btn mb20">Задать вопрос</button> 
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal fade" id="callback">
+        <div class="modal-dialog modal-dialog-centered  modal-xl">
+            <div class="modal-content modal_login modal_callback">
+    
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+                </div>
+    
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <h2>
+                        Заказать обратный звонок
+                    </h2>
+                    <p>Укажите ваши контактные данные и мы с вами свяжемся в течении рабочего дня</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 offset-lg-3">
+                                <form>
+                                    <input type="text" name="name" class="bottom_input" placeholder="Введите ваше Имя">
+                                    <input type="tel" name="tel" class="bottom_input" placeholder="Введите Ваш телефон">
+                                    <button type="submit" class="btn standart_btn mb20">Заказать</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.ham_btn').on('click', function () {
+            $('.ham_line1').toggleClass('active_hl1');
+            $('.ham_line2').toggleClass('active_hl2');
+            $('.ham_line3').toggleClass('active_hl3');
+            $('.mobile_menu').toggleClass('active');
+        });
+    </script>
 </body>
 </html>
