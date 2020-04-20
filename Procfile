@@ -1,0 +1,1 @@
+web: gunicorn esInvest.wsgi --log-file -
