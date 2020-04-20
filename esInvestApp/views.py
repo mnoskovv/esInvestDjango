@@ -122,7 +122,7 @@ def profile(request):
         'eur': currency_course["eur"],
         'usd_state': currency_course["usd_state"],
         'eur_state': currency_course["eur_state"],
-        'balance': request.user.profile.balance,
+        'balance': int(request.user.profile.balance),
         'open_deals':open_deals,
         'closed_deals':closed_deals,
     }

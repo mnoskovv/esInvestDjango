@@ -7,7 +7,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length = 30)
-    balance = models.FloatField(default = 0)
+    balance = models.FloatField(default = 80)
 
     def __str__(self):
         return self.user.username

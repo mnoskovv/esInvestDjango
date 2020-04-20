@@ -1,5 +1,5 @@
 {% extends "esInvestApp/base.html" %}
-
+{% load static %}
 {% block content %}
 {% if messages %}
 
@@ -47,7 +47,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <a href="#" class="btn standart_btn kab_btn mt20" role="button" data-toggle="modal" data-target="#depoz">Депозит</a>
-                            <a href="#" class="btn standart_btn kab_btn mt20" role="button" data-toggle="modal" data-target="#vivod">Вывод</a>
+                            <a href="#" class="btn standart_btn kab_btn mt20" role="button" data-toggle="tooltip" data-delay='{"show":"0", "hide":"3000"}' 
+                            data-placement="top" title="Доступно только после закрытия минимум трех сделок общей суммой в 100$">Вывод</a>
                         </div>
                         <div class="col-md-6">
                             <a href="{% url 'esInvestApp:start' %}" class="btn standart_btn kab_btn mt20" role="button">Начать инвестировать</a>
@@ -234,4 +235,79 @@
             </ul>
         </div>
 </section>
+
+<!-- The Modal -->
+<div class="modal fade" id="depoz">
+    <div class="modal-dialog modal-dialog-centered  modal-xl">
+        <div class="modal-content modal_login modal_callback">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close white_close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <h2>
+                    Депозит
+                </h2>
+                <div class="container">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-6 offset-lg-3">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <p>
+                                            Планируемая сумма инвестиций
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="mail" class="invest_input" placeholder="100">
+                                        <span>USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-2 offset-lg-2">
+                                Способ оплаты
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="r_container"><img src="{% static 'img/visa_color.png' %}" alt="">
+                                    <input type="radio" name="pay" value="visa">
+                                    <span class="r_checkmark"></span>
+                                </label>
+                                <div class="left_text">
+                                    <b>Visa</b>
+                                </div> 
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="r_container"><img src="{% static 'img/Mastercard_color.png' %}" alt="">
+                                    <input type="radio" name="pay" value="mastercard">
+                                    <span class="r_checkmark"></span>
+                                </label>
+                                <div class="left_text">
+                                    <b>Mastercard</b>
+                                </div> 
+                            </div>
+                            <div class="col-lg-2">
+                                <label class="r_container"><img src="{% static 'img/BC_Logotype.png' %}" alt="">
+                                    <input type="radio" name="pay" value="bitcoin">
+                                    <span class="r_checkmark"></span>
+                                </label>
+                                <div class="left_text">
+                                    <b>BTC</b>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <button type="submit" class="btn standart_btn mb20 mt20">Ok</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

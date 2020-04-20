@@ -41,7 +41,7 @@
                         <tbody>
                             {% for deal in available_deals %}
                             <tr href="#" data-toggle="modal" data-target="#invest" onclick="test_click('{{deal.name}}', '{{deal.term}}', '{{deal.percent}}');">
-                                <td class="not_on_mobile">1</td>
+                                <td class="not_on_mobile">{{ forloop.counter }}</td>
                                 <td>{{deal.name}}</td>
                                 <td>{{deal.term}} дней</td>
                                 <td>{{deal.invest_range}}</td>
