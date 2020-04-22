@@ -24,3 +24,5 @@ Project design was given by client.
 
 The project is deployed on heroku and available [here](https://es-invest.herokuapp.com)
 
+Note project is still in develop.
+
