@@ -1510,3 +1510,8 @@ input[type=range]:focus::-ms-fill-upper {
     z-index: -1;
     border-radius: 10px;
 }
+
+.fill { 
+    min-height: 100%;
+    height: 100%;
+}

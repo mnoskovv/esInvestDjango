@@ -61,7 +61,7 @@ ROOT_URLCONF = 'esInvest.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+            'DIRS': [os.path.join(BASE_DIR, 'esInvest/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -163,7 +163,7 @@ if os.getcwd() == '/app':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     
     # Разрешены все заголовки хостов.
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['es-invest.herokuapp.com']
 
     # Конфигурация статических ресурсов
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
